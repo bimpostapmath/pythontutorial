@@ -2,6 +2,7 @@
 % Python Setup https://tex.stackexchange.com/questions/83882/how-to-highlight-python-syntax-in-latex-listings-lstinputlistings-command
 \usepackage[utf8]{inputenc}
 \usepackage{url}
+\usepackage{tcolorbox}
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
 \DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
@@ -48,34 +49,32 @@ showstringspaces=false            %
 \begin{document}
 \maketitle
 \newpage
-\par Now we talk about python class.
+\begin{tcolorbox}[colback=blue!5!white,colframe=green!50!blue,title=Friendly Alert]
+	Now we talk about python class.
+\end{tcolorbox}
 \section{Why do we need class?}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=green!50!blue,title=Friendly Alert]
+	\par If you did AP Computer Science A, you can probably skip this part (If you remember :))
+\end{tcolorbox}
 \par Sometimes we need to operate through a same type of \textit{objects}. 
-For instance, if the school wants to "take care" of the students, then it has to know the \textbf{Name}, \textbf{Age}, \textbf{Grade}, and other characters.
-Of course, we are able to assign those "character" one by one, like 
+For instance, if the school wants to 'take care" of the students', then it has to know the \textbf{Name}, \textbf{Age}, \textbf{Grade}, and other characters.
+Of course, we are able to assign those 'character' one by one, like 
 \pythonexternal{./Chapter5_code/One_by_one.py}
+
+\par Apparently, this is \textbf{efficient} if there is 200 students.
+We can think of a way like this: what if we just treat the people as \textbf{Objects}?
+For instance, we treat all the students as 
+"human beings with age number, gender, name, and other information", 
+and we just create one 'class' for all of the students.
+That's basically why class is so useful
+\begin{center}
+\textbf{To say this in another way, you can create your own type!}
+\end{center}
+\section{Example}
+
 \section{Further Reference}
 \bibliographystyle{plain}
 \bibliography{chapter5bib.bib}
 \cite{Python}
 \end{document}
-
-%\documentclass[12pt]{article}
-%\usepackage{evan}
-%%\usepackage{xeCJK}
-%\usepackage{graphicx}
-%\usepackage{mathptmx}
-%\usepackage{float}
-%\usepackage[utf8]{inputenc}
-%\usepackage[english]{babel}
-%\usepackage{csquotes}
-%\usepackage{biblatex}
-%%\usepackage{fourier}
-%\usepackage{setspace}
-%\setlength {\marginparwidth }{2cm}
-%\title{}
-%\begin{document}
-%\maketitle
-%\singlespacing
-
-%\end{document}
