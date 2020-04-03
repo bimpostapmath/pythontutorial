@@ -141,6 +141,33 @@ This is just a function, which calls for the announcement function created above
 \section{Inheritance}
 Create a parent class, child class
 % https://www.w3schools.com/python/python_inheritance.asp May be I will add it as a source
+\par This is basically creating two classes, while one of them is from the other one class.
+For example, we first create a 'Parent' Class:
+\begin{python}
+	class Student:
+		def \_\_init\_\_(self, first-name,last-name, grade):
+			self.firstname=first-name
+			self.lastname=last-name
+		def printname(self):
+			print(self.firstname, self.lastname)
+\end{python}
+\par Now we create the children class called 'junior'
+\begin{python}
+	class Junior(Student):
+		pass
+\end{python}
+\par Here the 'pass' keyword is use because I don't want to add any other properties to the Junior Class.
+\par Like the \texttt{Student} class, the \texttt{Junior} class could also use the function print name
+\par We can also use the \_\_init\_\_ Function here, while there would be another function called \textt{super}
+\begin{python}
+	class Junior (Student):
+		def \_\_init\_\_(self, first-name, last-name, grade, year):
+		super().\_\_init\_\_(fist-name, last-name, grade)
+		self.graduationyear=year
+\end{python}
+\par Here the properties from the parents are inherited.
+\subsection{Add properties}
+\subsection{Add methods}
 \section{Iterators}
 \section{Scope}
 \section{Modules}
