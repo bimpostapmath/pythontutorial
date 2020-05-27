@@ -1,0 +1,50 @@
+\documentclass[chinese,12pt]{article}
+\usepackage{evan}[sexy]
+% Biblatex Part
+%\usepackage[
+%backend=biber,
+%style=alphabetic,
+%]{biblatex}
+%\addbibresource{}
+%\usepackage{xcolor}
+\usepackage{setspace}
+\newcommand\pythonstyle{
+\lstset{
+language=Python,
+basicstyle=\ttm,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            % 
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][breaklines]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+\title{Python Tutorial on Module}
+\begin{document}
+\maketitle
+\doublespacing
+\begin{CJK*}{UTF8}{gbsn}
+	\section{Introduction}
+	\par When writing code, we might use repeating code, or sometimes we want to keep the code organized by splicing a big chunk of code into many small parts. Using \texttt{modules} would finish this perfectly
+
+\end{CJK*}
+\end{document}
