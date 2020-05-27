@@ -1,13 +1,24 @@
-\documentclass[chinese,12pt]{article}
-\usepackage{evan}[sexy]
-% Biblatex Part
-%\usepackage[
-%backend=biber,
-%style=alphabetic,
-%]{biblatex}
-%\addbibresource{}
-%\usepackage{xcolor}
-\usepackage{setspace}
+\documentclass[12pt]{article}
+% Python Setup https://tex.stackexchange.com/questions/83882/how-to-highlight-python-syntax-in-latex-listings-lstinputlistings-command
+%\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{tcolorbox}
+%\usepackage{biblatex}
+% Default fixed font does not support bold face
+%\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+%\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+%\usepackage{biblatex}
+%\addbibresource{chapter5bib.bib}
+
+% Python style for highlighting
 \newcommand\pythonstyle{
 \lstset{
 language=Python,
@@ -35,16 +46,50 @@ showstringspaces=false            %
 \pythonstyle
 \lstinputlisting[#1]{#2}}}
 
+%\bibliography{chapter5bib.bib}
 % Python for inline
 \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
-
-\title{Python Tutorial on Module}
+\title{Python Tutorial on Class}
+\author{Leo Zipeng Lin}
 \begin{document}
 \maketitle
-\doublespacing
-\begin{CJK*}{UTF8}{gbsn}
-	\section{Introduction}
-	\par When writing code, we might use repeating code, or sometimes we want to keep the code organized by splicing a big chunk of code into many small parts. Using \texttt{modules} would finish this perfectly
+\newpage
+\section{Introduction}
+\par When writing code, we might use repeating code, or sometimes we want to keep the code organized by splicing a big chunk of code into many small parts. Using \texttt{modules} would finish this perfectly
+\section{Easy example}
+For instance, this is a module: 
+\begin{python}
+	def hello(name):
+		print("hello"+name)
+\end{python}
+It seems like a function, right? However, a module includes \textbf{more than functions, since it can include class object, or even modules too.}
+\section{How to import a module?}
+After reading the function chapter (chapter 3), you will understand functions and therefore might know to write some modules at once, but you might ask :"how could I import them?"
 
-\end{CJK*}
+Well the answer is
+\begin{enumerate}
+	\item save the file as hellom.py
+	\item In another file add "import hello"
+	\item now call the \textbf{function} ! You can call it by using hellom.hello("Tom")
+\end{enumerate}<++>
+		You might ask "Why do we have to name the file such a random name?" This is because of two reasons
+		\begin{enumerate}
+			\item If you just name the file as simple "hello", it might have the same name as the module you installed (like since it has a actually common package called "common", naming a package "random" would definitely cause error, and therefore you should be careful about the naming convention.)
+			\item Naming the file "hello-module" doesn't work since the compiler won't identify it (it is not a identifier), while naming it as "hellom.py" or "hello\_m.py" is allowed
+		\end{enumerate}
+\section{Tricks in using modules}
+\subsection{Renaming the modules}
+Imagining one day you are just too lazy to import the module, or the module's name is too long (like matploblib.pyplot), you could try
+\begin{python}
+	import  matplotlib.pyplot as plt
+\end{python}
+and now whenever you want to use the module 'matplotlib.pyplot', you can write it as 'plt'
+\subsection{Importing part of the module}
+When you only want to import a little bit of function from a bloated module, just use
+\begin{python}
+	from hellom.py import hello
+\end{python}
+and now you only have one function left!
+\section{Some Common Modules}
+
 \end{document}
