@@ -181,14 +181,26 @@ For example, we first create a 'Parent' Class:
 \par Here, the \textbf{self} is a parameter that refers to the current object of the class, here it is the \textbf{student}. It does not have to be the word called 'self', we can also use \textbf{any word you want}.
 \section{Exercises}
 \begin{enumerate}
-	\item Try to write a \textbf{object} for all the countried
+	\item Try to write a \textbf{object} for a country
 		\begin{itemize}
-			\item Try to write a function in case to create a country.
+			\item Try to write a function in case to create a country (name, population)
 			\item Write a function to update the population (like after the cencus)
 		\end{itemize}
 \end{enumerate}
 \newpage
 \section{Answers/Hints to the exercises}
+The answers are just for refrences.
+\begin{python}
+class country:
+	def \_\_init\_\_(self, name, population):
+		self.name=name
+		self.population=population
+	def update(self, new-population):
+		self.popultion=new-population
+	# Check whether it works
+jp=country("Japan", 10000000)
+jp.update(2000000)
+\end{python}
 \newpage
 \printbibliography
 \end{document}
