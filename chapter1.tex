@@ -1,0 +1,326 @@
+\documentclass{article}
+\setlength{\topmargin}{-0.5 in}
+\setlength{\oddsidemargin}{0 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{9 in}
+\setcounter{section}{-1}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{multicol}
+\definecolor{code}{RGB}{208,255,212}
+\definecolor{output}{RGB}{236,168,243}
+\definecolor{writing}{RGB}{230,230,230}
+\tcbset{width=\textwidth,boxrule=0pt,colback=code,arc=10pt,auto outer arc,left=0pt,right=0pt,boxsep=5pt}
+\newcommand{\define}[1]{\begin{center}\ttfamily #1\end{center}}
+\newcommand{\icode}[1]{{\ttfamily #1}}
+\newenvironment{code}{\begin{tcolorbox}\ttfamily}{\end{tcolorbox}}
+\newenvironment{out}{\begin{tcolorbox}[colback=output]\ttfamily}{\end{tcolorbox}}
+\begin{document}
+\begin{center}
+{\LARGE\textbf{Learning Python I}}
+\end{center}
+\vspace{0.5 cm}
+\section{How to Approach This Tutorial}
+This guide is meant to be read on your own time. We suggest reading everything slowly until you understand the material, and then try to complete the examples without looking at the solution first. Then check your work with the given solution and see what, if anything, went wrong, and if so, go back to the section to understand. Once you have read the section, do the problems \textit{in order}, because the level of thinking required is a function of the problem number. 
+
+Moreover, this guide can only bring you so far in understanding without your \textit{active participation} in learning. For this reason, it is critical to do the problems and try to understand or do the examples first without looking at the solution, then check your answer.
+
+In the directions for problems, here is the necessary vocabulary:\\
+\indent \ \textit{Predict} means do \textbf{not} use your computer to solve the problem.\\
+\indent \ \textit{Find} means use your computer if you are confused.\\
+When you need help, there are many resources you can go to. You can ask your fellow students; you can go to Dr.~Grove's student hours; you can contact Dr.~Grove (as long as it is not the night/morning before the assignment is due). Additionally, you can look online (not recommended as the first place to look).
+
+The point that should be clear is that learning Python, or anything new, requires time and perseverance. 
+\subsection{Key and Symbols}
+\begin{multicols}{2}
+\begin{tcolorbox}[width=.5\textwidth]
+	\ttfamily
+	a = 5
+\end{tcolorbox}
+\noindent The green box denotes python code.
+\end{multicols}
+\begin{multicols}{2}
+\begin{tcolorbox}[colback=output, width=.5\textwidth]
+	\ttfamily
+\end{tcolorbox}
+\noindent A purple box shows the output of the code in the green box.
+\begin{tcolorbox}[colback=writing, width=.5\textwidth]
+	\ttfamily
+\end{tcolorbox}
+\noindent A grey box denotes that an answer is needed in words or a single line of code.
+\end{multicols}
+
+\noindent Definitions or short examples are denoted by the following format.
+\begin{center}
+	\ttfamily Dr.~Grove = teacher
+\end{center}
+\section{What is Python}
+Python is a high level programming language. ``High level" means that it resembles English, and a ``programming language" means that it is a way to interact with your computer. Why should you learn it? Python allows for \textit{checking your answers on a math test}, encrypting messages, and analyzing data, among its many applications. In order to reach these possibilities, we first must understand what follows.
+
+We start with three basic functions of python: variables, printing, and commenting.
+A \textbf{variable} is exactly like it sounds --- a name that stores a value. The syntax of storing a value to a variable name is 
+\begin{center}
+	\texttt{Name} = \texttt{value}
+\end{center}
+Assignment also supports other signs: \icode{i = i + 1} is equivalent to \icode{i += 1}.\\
+\textbf{print()} tells your computer to show in the output what you put in parentheses.
+\begin{center}
+	\ttfamily print(variable)
+\end{center}
+This will produce in the output the value associated with the variable.
+
+A \textbf{comment} is words in the code that is not read by python. In other words, commenting allows for you to describe to yourself and others what the code does. We do this so that at a later date, we save time by reading the comments and not following every line of code. For these reasons it is a good practice to comment your code. A comment is denoted by a ``\#" for one line and `````` insert code here """ for multiple lines.
+\define{\# this is a comment and does not affect the output of the program}
+\noindent With these tools, let's examine a few examples. 
+
+\section{Example}
+1. Cover the comments (to the right of \#) and the output. Try to understand what the code is doing and predict what the output will be. Then check your answers.
+\vspace{1 mm}
+\begin{tcolorbox}
+	\ttfamily
+	\begin{tabbing}
+		\hspace{3.25 in}\=\hspace{3.25 in} \kill
+		var = 5\>\# defines a variable called "var"\\
+		print(var)\>\# prints the value stored in var
+	\end{tabbing}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=output]
+	\ttfamily
+	5
+\end{tcolorbox}
+
+\section{Problem}
+1. Predict what will be in the output for the following code.
+\begin{tcolorbox}
+	\ttfamily
+	\begin{tabbing}
+		\hspace{3.25 in}\=\hspace{3.25 in} \kill
+		a = 5\\
+		b = 11\\
+		c = 23\\
+		c = b\\
+		b = c\\
+		a = c\\
+		print(a)
+	\end{tabbing}
+\end{tcolorbox}
+\noindent\textbf{Solution:}
+\begin{tcolorbox}[colback=output]
+	\ttfamily 
+	\phantom{11}\\
+\end{tcolorbox}
+\section{Operations}
+Much like a calculator, Python can perform operations, which are summarized in the table below.
+\begin{multicols}{2}
+\begin{itemize}
+	\item ``*" denotes multiplication
+	\item ``/" denotes division
+	\item ``**" denotes a power
+	\item ``+" denotes addition
+	\item ``()" denotes groupings of calculations
+	\item ``$-$" denotes subtraction
+	
+\end{itemize}
+\end{multicols}
+\section{Examples}
+\noindent1. Cover the comments. Try to understand what the code is doing and predict what the output will be. Then check your answers.
+\vspace{1 mm}
+\begin{tcolorbox}
+	\ttfamily
+	\begin{tabbing}
+		\hspace{3.25 in}\=\hspace{3.25 in} \kill
+		"""\>\# this starts a multi-line comment\\
+		nom = 255\>\# useless due to it being a comment\\
+		om = 0\>\# does nothing\\
+		omnom = om + nom**(om) + nom\>\\
+		yum = omnom/nom\>\\
+		print(yum)\>\\
+		"""\>\# ends comment
+	\end{tabbing}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=output]
+	\ttfamily
+\end{tcolorbox}
+\vspace{.25 cm}
+\noindent2. Cover the comments and the output. Try to understand what the code is doing and predict what the output will be. Then check your answers.
+\vspace{1 mm}
+\begin{tcolorbox}
+	\ttfamily
+	\begin{tabbing}
+		\hspace{3.25 in}\=\hspace{3.25 in} \kill
+		nom = 255\>\# defines a variable\\
+		om = 0\>\# another variable\\
+		omnom = om + nom**(om) + nom\>\# omnom = 0 + 1 + 255\\
+		yum = omnom**0.5\>\# note that a power of half is a square root\\
+		print(yum**.5)\>\# print the square root of yum
+	\end{tabbing}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=output]
+	\ttfamily
+	4
+\end{tcolorbox}
+\section{Strings}
+In addition to dealing with numbers, as shown above, variables can store \textbf{strings}, which are a data type that stores characters. A string is a sequence of characters surrounded by quotes.
+\define{Str = "Hello world"}
+Here the variable \texttt{Str} stores the string \texttt{"Hello world"}.
+
+What do you think happens when we print a string? Well, let's see.
+
+\begin{tcolorbox}
+	\ttfamily
+	\begin{tabbing}
+		\hspace{3.25 in}\=\hspace{3.25 in} \kill
+		print("Hello world")\>\# print a string
+	\end{tabbing}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=output]
+	\ttfamily
+	Hello world
+\end{tcolorbox}
+As we can see, it prints the characters within the double quotes.
+
+\newpage
+\section{Experimenting (Problems)}
+\begin{multicols}{2}
+\noindent1. Find the output for the following code.
+\begin{tcolorbox}[width=.5\textwidth]
+	\ttfamily
+	\begin{tabbing}
+		\hspace{3.25 in}\=\hspace{3.25 in} \kill
+		print("`Have you seen X's code?'")
+	\end{tabbing}
+\end{tcolorbox}
+\noindent\textbf{Solution:}
+\begin{tcolorbox}[colback=output,width=.5\textwidth]
+	\ttfamily 
+	\phantom{`Have you seen X's code?'}\\
+\end{tcolorbox}
+
+\noindent2. Find the output for the following code.
+\begin{tcolorbox}[width=.5\textwidth]
+	\ttfamily
+	\begin{tabbing}
+		\hspace{3.25 in}\=\hspace{3.25 in} \kill
+		print(`Have you seen X's code?')
+	\end{tabbing}
+\end{tcolorbox}
+\noindent\textbf{Solution:}
+\begin{tcolorbox}[colback=output,width=.5\textwidth]
+	\ttfamily 
+	\phantom{error}\\
+\end{tcolorbox}
+\end{multicols}
+\section{More on Printing}
+It is possible to print a string and a variable in one print. We can do this by separating the string and the variable by a comma or a $+$ sign. The difference is that the comma-separated values automatically insert a space between the two in the output.
+\section{Example}
+\noindent1. Cover the comments. Try to understand what the code is doing and predict what the output will be. Then check your answers.
+\vspace{1 mm}
+\begin{tcolorbox}
+	\ttfamily
+	\begin{tabbing}
+		\hspace{3.25 in}\=\hspace{3.25 in} \kill
+		myAge = 20\>\# names a variable\\
+		print("I am", myAge, "years old.")\>\# prints the string then the value \\
+		\>\hspace{4 pt} of the variable, then another string
+	\end{tabbing}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=output]
+	\ttfamily I am 20 years old.
+\end{tcolorbox}
+
+\section{Data Types}
+Data types are ways to store data, and so far we have seen 3: integers, strings, and floating point numbers (meaning there is a decimal point). Here we discuss three more: lists, tuples, and dictionaries.
+\subsection{Lists}
+Lists store information in brackets, with comma-separated values. This information can be any data type. Lists are useful because they are \textbf{mutable}, which means their values can be changed. The syntax is as follows.
+\define{Lst = [`a', `b', `c']}
+Lists are \textbf{indexed}, which means each entry a, b, and c, each has a number assigned to its position, as shown below.
+\define{Lst = [`a', `b', `c']}
+\hspace{6.32 cm}indexes: \ 0 \hspace{.5 cm} 1 \hspace{.5 cm} 2\\
+This is useful because we can ``grab" the third item by typing the following, which returns {\ttfamily `c'}.
+\define{lst[2]}
+So in order to ``grab" the $n$th item in a list with at least $n$ entries, we type
+\define{lst[n - 1].}
+This returns the data in the $n$th entry in the list. This is because the number in brackets is the index of the item we wish to access, and since indexing starts at 0, we subtract 1. Lists also support slicing, which returns a subset of the list. The way to do this is \icode{list[a:b]}. This returns a new list with the entries in \icode{list} from index \icode{a} to the index one less than \icode{b}. If one is not present, it assumes to start at the index 0 or end at the last index. 
+
+\subsubsection{Example}
+\noindent1. {\ttfamily Bdays} is a list of birthdays. If Carter's birthday is the third in the list and Benjamin's is the first, write code that prints their name then a colon, then their birthday from the list.
+\vspace{1 mm}
+
+\noindent\textbf{Solution:}
+\begin{tcolorbox}
+	\ttfamily
+	\begin{tabbing}
+		\hspace{3.25 in}\=\hspace{3.25 in} \kill
+		Bdays = ["December 1, 2010", "April 30, 2011", "June 15, 2012", "January 1, 2013"]\>\\
+		print("Carter: " + Bdays[2])\>\\
+		print("Benjamin: " + Bdays[0])\>
+	\end{tabbing}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=output]
+	\ttfamily Carter: June 15, 2012\\
+	Benjamin: December 1, 2010
+\end{tcolorbox}
+\vspace{.5 cm}
+
+\noindent A \textbf{method} is an operation specific to a data type. 
+\define{type.method(arguments)}
+For list methods, this means
+\define{list.method(arguments)}
+Below is a table of list methods.
+\begin{tabbing}
+	\hspace{1.5 in} \= \hspace{2 in} \=\kill
+	\>\icode{list.append(item)} \>This extends the list by one and adds the\\
+	\>\>\icode{item} to the end.\\
+	\>\>\\
+	\>\icode{list.insert(ib, item)}  \> This places the \icode{item} in the index after \icode{ib},\\
+	\>\>and everything after index \icode{ib} is shifted by one.\\
+	\>\\
+	\>\icode{list.remove(item)}\>This removes the \icode{item} (with the smallest index\\ \>\>if there are multiple).\\
+	\>\\
+	\>\icode{list.pop(ind)}\>This removes the item at index \icode{ind}.\\
+	\>\\
+	\>\icode{list.count(item)}\>This returns the number of times \icode{item} appears\\
+	\>\>in the list.\\
+	\>\\
+	\>\icode{list.index(item)}\>This returns the index of the first occurence of\\ \>\>\icode{item}.
+\end{tabbing}
+
+\subsubsection{Problem}
+If we have a list of people \icode{queue}. We want this list to serve the purpose of first in first out, where the first person added to this list is the first to leave. What method should be called to add a person whose name is \icode{Name}? What method should be called to remove a person from \icode{queue}?\\[.2 cm]
+\noindent\textbf{Solution:}
+
+\begin{tcolorbox}[colback=writing]
+	\ttfamily \phantom{queue.append("Name")}\\
+	\phantom{queue.pop(0)}
+\end{tcolorbox}
+
+
+\subsection{Tuples}
+Tuples are \textbf{immutable}, which means that their entries cannot be changed. Like lists, their entries are comma-separated, but they are enclosed with parentheses.
+\define{tup = ("abc", "def", "ghi", 1024)}
+Tuples are also indexed, so {\ttfamily tup[3]} would return 1024.
+
+Tuples, like lists, also support their own methods: {\ttfamily count()} and {\ttfamily index()}. These are similar to the list methods of the same name, except these are for tuples. Namely, {\ttfamily count(v)} returns the number of times a value {\ttfamily v} occurs in the tuple, and {\ttfamily index(v)} returns the smallest index where the value {\ttfamily v} is stored. The way to call these methods is defined below.
+\define{tuple.count(v)}
+\define{tuple.index(v)}
+
+\subsection{Dictionaries}
+Dictionaries store values, and unlike lists, each value has an associated \textbf{key}. A key is a reference for the value. A key can be thought of as a page number in a book, and the value can be thought of as the words on that page in the book. Unlike the book, keys can be any immutable type. The syntax of creating one is {\ttfamily key: value} pairs separated by commas and enclosed in brackets.
+\define{D = \{"a": 50, "b": 51, "c": 80, "d": 81\}}
+Here we have dictionary \icode{D}, and the code to return the value stored with the key \icode{"c"} is \icode{D["c"]}.
+
+\section{Check Your Understanding}
+\noindent \icode{D} is a dictionary whose values are the magnitude of the points. From the dictionary, print the magnitude associated with (4, 3). Then write a statement that prints the magnitude of the point \icode{(X, Y)}.
+\vspace{1 mm}
+
+\noindent\textbf{Solution:}
+\begin{tcolorbox}
+	\ttfamily D = \{(3, 4): 5, (4, 3): 5, (1, 1): 2**(.5)\}\\
+	\phantom{D[(4, 3)]}\\
+	\phantom{print((X**2 + Y**2)**(0.5))}\\
+	\vspace{3 cm}
+	\phantom{u}
+\end{tcolorbox}
+
+\end{document}
