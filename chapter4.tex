@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+% Python Setup https://tex.stackexchange.com/questions/83882/how-to-highlight-python-syntax-in-latex-listings-lstinputlistings-command
+%\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{tcolorbox}
+%\usepackage{biblatex}
+% Default fixed font does not support bold face
+%\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+%\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+%\usepackage{biblatex}
+%\addbibresource{chapter5bib.bib}
+
+% Python style for highlighting
+\newcommand\pythonstyle{
+\lstset{
+language=Python,
+basicstyle=\ttm,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            % 
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][breaklines]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+%\bibliography{chapter5bib.bib}
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+\title{Python Tutorial on Module}
+\author{Leo Zipeng Lin}
+\begin{document}
+\maketitle
+\newpage
+\section{Introduction}
+\par When writing code, we might use repeating code, or sometimes we want to keep the code organized by splicing a big chunk of code into many small parts. Using \texttt{modules} would finish this perfectly
+\section{Easy example}
+For instance, this is a module if you want to write a function that outputs "hello" and the name when you input a name.
+\begin{python}
+	def hello(name):
+		print("hello"+name)
+\end{python}
+It seems like a function, right? However, a module includes \textbf{more than functions, since it can include class object, or even modules too.}
+
+Once again, the reason why we use modules is that it makes a function \textbf{flexible} and we can import any functoins we want with only one line.
+\section{How to import a module?}
+After reading the function chapter (chapter 3), you will understand functions and therefore might know to write some modules at once, but you might ask :"how could I import them?"
+
+Well the answer is
+\begin{enumerate}
+	\item save the file as hellom.py
+	\item In another file add "import hello"
+	\item now call the \textbf{function} ! You can call it by using hellom.hello("Tom")
+\end{enumerate}<++>
+		You might ask "Why do we have to name the file such a random name?" This is because of two reasons
+		\begin{enumerate}
+			\item If you just name the file as simple "hello", it might have the same name as the module you installed (like since it has a actually common package called "common", naming a package "random" would definitely cause error, and therefore you should be careful about the naming convention.)
+			\item Naming the file "hello-module" doesn't work since the compiler won't identify it (it is not a identifier), while naming it as "hellom.py" or "hello\_m.py" is allowed
+		\end{enumerate}
+\section{Tricks in using modules}
+\subsection{Renaming the modules}
+Imagining one day you are just too lazy to import the module, or the module's name is too long (like matploblib.pyplot), you could try
+\begin{python}
+	import  matplotlib.pyplot as plt
+\end{python}
+and now whenever you want to use the module 'matplotlib.pyplot', you can write it as 'plt'
+\subsection{Importing part of the module}
+When you only want to import a little bit of function from a bloated module, just use
+\begin{python}
+	from hellom.py import hello
+\end{python}
+and now you only have one function left! If you have more than one functoin in hellom.py and you only want to import the hello function, this is very useful.
+\section{Some Common Modules}
+Here we just introduce some interesting/useful modules
+\begin{itemize}
+	\item \texttt{dir} can show you all the functions in your modules. This is a built-in module
+	\item \texttt{os} can help you do things around your laptop itself. built-in.
+	\item \texttt{random} for random numbers, built-in.
+	\item \texttt{math} for basic things about math, built-in.
+	\item \texttt{scipy} for advanced things abuot math, built-in.
+	\item \texttt{matplotlib, numpy, pandas} if you want to be a successful data-scientist.
+\end{itemize}
+\section{Exercises}
+\begin{enumerate}
+	\item Fill in the sentence based on what you learned here
+		\begin{enumerate}
+			\item $\rule{1cm}{0.10mm}$ math
+			\item $\rule{1cm}{0.10mm}$ math.pi $\rule{1cm}{0.10mm}$ math
+			\item $\rule{1cm}{0.10mm}$ numpy $\rule{1cm}{0.10mm}$ np
+		\end{enumerate}
+	\item Write a program (module) for the following feature and then write how you will import it.
+		\\ The module will take a radius of a circle and has two functions: one is output the circumference of the circle and then the area of the circle.
+		\\ Then, import the module and output the two quantities of circles above.
+	\item (Open-Question) Find \texttt{1} package (module) you like and write something about it.
+\end{enumerate}
+\newpage
+\section{Answers}:
+Disclaimer: This answer is only for reference!
+\begin{enumerate}
+	\item The answers are below:
+		\begin{enumerate}
+			\item \textbf{import} math	
+			\item \textbf{from} math import \textbf{pi}
+			\item \textbf{import} numpy from \textbf{as} np 
+		\end{enumerate}
+	\item Below are the code
+	\\ For the module circle\_m.py
+		\begin{python}
+			from math import pi
+			def circum(radius):
+				return(2*pi*radius)
+			def area(radius)
+				return(pi*radius**2)
+		\end{python}
+		\\ The following is the code for importing the module
+		\begin{python}
+			import circle\_m.py
+			print(circle\_m.circum(1))
+			print(circle\_m.area(1))
+		\end{enumerate}
+	\item Write anything you like! The following is one I like:
+		\\ I really like the 'tempfile' module from python, becuase it can create a temporary file to help me automate the works without messing up my system. For instance, the function tempfile.TemporaryFile has specific parameters like setting the right to write the file, the location, or even the encoding of it. It really helps a lot.
+\end{document}

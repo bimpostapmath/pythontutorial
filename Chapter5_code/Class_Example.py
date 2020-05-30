@@ -5,6 +5,8 @@ class student(object):
         self.age   = age
         self.grade =grade
         self.gender=gender
+        # Try it by yourself!
+        # self.self="hello"
     def announcement(self):
         if (self.grade==11):
             print("Junior")

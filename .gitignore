@@ -1,0 +1,8 @@
+#.gitignore
+*.pdf
+*.bib
+*.log
+*.bbl
+*.synctex.gz
+*.run.xml
+*.un~
