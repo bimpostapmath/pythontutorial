@@ -1,0 +1,510 @@
+\documentclass{article}
+\setlength{\topmargin}{-0.5 in}
+\setlength{\oddsidemargin}{0 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{9 in}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{multicol}
+\definecolor{code}{RGB}{208,255,212}
+\definecolor{output}{RGB}{236,168,243}
+\definecolor{writing}{RGB}{230,230,230}
+\tcbset{width=\textwidth,boxrule=0pt,colback=code,arc=10pt,auto outer arc,left=0pt,right=0pt,boxsep=5pt}
+\newcommand{\define}[1]{\begin{center}\ttfamily #1\end{center}}
+\newcommand{\icode}[1]{{\ttfamily #1}}
+\newenvironment{code}{\begin{tcolorbox}\ttfamily}{\end{tcolorbox}}
+\newenvironment{out}{\begin{tcolorbox}[colback=output]\ttfamily}{\end{tcolorbox}}
+\newenvironment{words}{\begin{tcolorbox}[colback=writing]}{\end{tcolorbox}}
+\begin{document}
+\begin{center}
+	{\LARGE\textbf{Learning Python II}}\\[.25 cm]
+	{\LARGE\textbf{Solutions}}
+\end{center}
+\vspace{0.5 cm}
+\section{\icode{for} Loop}
+The \icode{\textbf{for}} loop is a way to execute code multiple times. An \textbf{iterable} is data that can be sequenced. The syntax of a \icode{for} loop is as follows.
+\begin{center} \ttfamily
+\begin{tabular}{|l}
+for item in iterable:\\
+\hspace{2 em}\# insert code\\
+\hspace{2 em}\# here
+\end{tabular}
+\end{center}
+This runs the code \icode{\# insert code here} as many times as there are items in the \icode{iterable}, each time setting the variable \icode{item} equal to the data in the iterable. Lists, strings, dictionaries, and tuples are all examples of iterables. In strings, the item is the individual character. When looping through a dictionary, the item would be the key. The indentation is necessary to denote what lies in the for loop. By convention, the indent is equal to four spaces.
+
+A useful function is \icode{range(a, b, c)}, which is an iterable returning integers. The mandatory argument \icode{b} is an integer specifying the end of the integers, and the optional argument \icode{a} is the integer that the \icode{range} starts at (inclusive), which is set to 0 by default. There is an optional \icode{c} parameter, which is the difference between successive items returned, set to 1 by default. For example, note the following code.
+
+Another useful function is \icode{len(a)}, which returns the number of items there are if \icode{a} is a list.
+
+\begin{code}
+\begin{tabbing}
+	\hspace{3.25 in}\=\hspace{3.25 in} \kill
+	for n in range(3):\>\\
+	\hspace{2 em}print(n)\>
+\end{tabbing}
+\end{code}
+\begin{out}
+0\\
+1\\
+2
+\end{out}
+Here \icode{3} takes the place of the parameter \icode{b}, and so it prints at the starting point, 0, adds \icode{c = 1}, so it then prints 1; it repeats with \icode{2}. Since \icode{3} is the end, it does not print \icode{3}.
+
+
+\subsection{Example}
+\noindent1. {\ttfamily Bdays} is a list of birthdays. If the order of people in the list is Alan, Max, Nathan, and Ethan, write code that prints their name then a colon and a space, then their birthday from the list.
+\vspace{1 mm}
+
+\noindent\textbf{Solution:}
+\begin{code}
+	\begin{tabbing}
+		\hspace{3.25 in}\=\hspace{3.25 in} \kill
+		Bdays = ["December 1, 2010", "April 30, 2011", "June 15, 2012", "January 1, 2013"]\>\\
+		names = ["Alan", "Max", "Nathan", "Ethan"]\>\\
+		for i in range(len(names)):\>\\
+		\hspace{2 em}print(names[i] + ": " + Bdays[i])
+	\end{tabbing}
+\end{code}
+\begin{out}
+	Alan: December 1, 2010\\
+	Max: April 30, 2011\\
+	Nathan: June 15, 2012\\
+	Ethan: January 1, 2013
+\end{out}
+\vspace{.5 cm}
+
+\section{List Comprehensions}
+A comprehension is a way to make an iterable using a \icode{for} loop. The syntax is 
+\define{T = [entry for item in iterable]}
+To understand what this does, consider the following code. We want to make a list of squares from 0 to 16.
+
+\begin{center} \ttfamily
+	\begin{tabular}{|l}
+		T = []\\
+		for i in range(5):\\
+		\hspace{2 em}T.append(i**2)
+	\end{tabular}
+\end{center}
+This is a kind of bulky way to say that \icode{T = [0, 1, 4, 9, 16]}. In order to make this more streamlined, the following produces the same result as the above:
+
+\define{T = [i**2 for i in range(5)]}
+
+\subsection{Problem}
+The following code is an attempt to turn the dictionary \icode{bdays} into a list of tuples \icode{(name, birthday)}. However, there is a problem with the code. Fix the problem and explain why the below code does not work as intended.
+
+\noindent\textbf{Solution:}
+\begin{code}
+	bdays = \{\\
+	\phantom{i}\hspace{2 em}"Albert Einstein": "March 14, 1879",\\
+	\phantom{i}\hspace{2 em}"Martin Luther King Jr.": "January 1, 1929",\\
+	\phantom{i}\hspace{2 em}"Richard Feynman": "May 18, 1918",\\
+	\}
+	
+	bdays\_list = [(i, bdays[i]) for i in bdays]
+\end{code}
+\noindent\textbf{Explanation:}
+\begin{words}
+	First off, \icode{i} and \icode{bdays[i]} are switched because we want \icode{(name, birthday)}, and the name is \icode{i}. Next, \icode{i} and \icode{bdays[i]} are in parentheses because we want them to be a tuple.
+\end{words}
+
+\section{\icode{if} Statement}
+The \icode{if} statement only runs code if a given condition is true. The syntax is as follows.
+
+\begin{center} \ttfamily
+	\begin{tabular}{|l}
+		if condition == True:\\
+		\hspace{2 em}\# insert code\\
+		\hspace{2 em}\# here
+	\end{tabular}
+\end{center}
+The \icode{==} checks if both sides of the sign are equal. There are other operators, listed below.
+
+\begin{multicols}{2}
+	\begin{itemize}
+		\item ``==" checks equality
+		\item ``!=" checks not equality
+		\item ``$<$" checks less than
+		\item ``$>$" checks greater than
+		\item ``$<=$" checks less than or equal to
+		\item ``$>=$" checks greater than or equal to
+	\end{itemize}
+\end{multicols}
+\noindent To check multiple conditions at once, the word \icode{and} can connect the conditions.
+\subsection{Example}
+\noindent \icode{grades} is a list of grades as a percent. Make a new list called \icode{top\_grades} which are the grades of only the five highest grades in the class.
+\vspace{1 mm}
+
+\noindent\textbf{Solution \# 1:}
+\begin{code}
+	\begin{tabular}{l|l}
+		1&grades = [23, 26, 54, 76, 45, 52, 66, 80]\\
+		2&\# the following code sorts the list from high to low by swapping adjacent entries\\
+		3&for h in range(15): \\
+		4&\hspace{2 em}for i in range(8): \\
+		5&\hspace{4 em}if i != 7 and grades[i + 1] > grades[i]:\\
+		6& \hspace{6 em}grades.append(grades.pop(i))\\
+		7& top\_grades = grades[:5]
+	\end{tabular}
+\end{code}
+\noindent Let's break that down line-by-line.
+\vspace{.5 cm}
+
+\begin{code}
+	\begin{tabular}{l|l}
+		1&grades = [23, 26, 54, 76, 45, 52, 66, 80]
+	\end{tabular}
+\end{code}
+Simple enough: it makes a list called \icode{grades} with 8 entries.
+
+\begin{code}
+	\begin{tabular}{l|l}
+		2&\# the following code sorts the list from high to low by swapping adjacent entries
+	\end{tabular}
+\end{code}
+Commentary is appreciated: this explains that lines 3 - 7 sort the grades.
+
+\begin{code}
+	\begin{tabular}{l|l}
+		3&for h in range(15):
+	\end{tabular}
+\end{code}
+Since \icode{h} is not used later in the code, we know the only purpose of this line is to repeat all the code in it (lines 4 - 7) 15 times (so that we know for sure that the list is sorted; 15 is a random high number).
+
+\begin{code}
+	\begin{tabular}{l|l}
+		4&\hspace{2 em}for i in range(8):
+	\end{tabular}
+\end{code}
+\icode{i} is the index of the list so that we can compare adjacent items. The parameter of the range function is 8 because there are 8 entries in the list \icode{grades}. So this says for each index \icode{i}, execute lines 5 - 7.
+
+\begin{code}
+	\begin{tabular}{l|l}
+		5&\hspace{4 em}if i != 7 and grades[i + 1] > grades[i]:
+	\end{tabular}
+\end{code}
+First note this portion of code is executed for each index \icode{i}. So this line says execute lines 6 and 7 if the index is not the last (\icode{i != 7}) and if the value at index \icode{i + 1} is greater than the value at index \icode{i}.
+
+\begin{code}
+	\begin{tabular}{l|l}
+		6& \hspace{6 em}grades.append(grades.pop(i))\\
+	\end{tabular}
+\end{code}
+Remeber, code at 3 indents denotes that the index \icode{i} is not the last and that the next value is greater than that at index \icode{i}. This line adds to the end (append) the value at index \icode{i}, which has the value \icode{grades.pop(i)}. This means the list is in descending order of grades, since the smaller value is appended.
+
+\begin{code}
+	\begin{tabular}{l|l}
+		7& top\_grades = grades[:5]
+	\end{tabular}
+\end{code}
+This is the finishing step: it assigns the top 5 grades to a new list called \icode{top\_grades}. This is because if the first number is not present in list slicing, it starts at index 0, and the second number, \icode{5}, is the index right after, meaning it stops at index 4, returning a list of the first 5 entries.
+
+\newpage
+\noindent\textbf{Solution \# 2:}
+
+\begin{code}
+	\begin{tabular}{l|l}
+		1&grades = [23, 26, 54, 76, 45, 52, 66, 80]\\
+		2&for i in range(len(grades)):\\
+		3&\hspace{2 em}for k in range(i + 1, len(grades)):\\
+		4&\hspace{4 em}if grades[k] > grades[i]:\\
+		5& \hspace{6 em}grades.insert(i, grades.pop(k))\\
+		6& top\_grades = grades[:5]
+	\end{tabular}
+\end{code}
+\noindent Let's break that down line-by-line.
+\vspace{.5 cm}
+
+\begin{code}
+	\begin{tabular}{l|l}
+		1& grades = [23, 26, 54, 76, 45, 52, 66, 80]
+	\end{tabular}
+\end{code}
+Same as before.
+
+\begin{code}
+	\begin{tabular}{l|l}
+		2&for i in range(len(grades)):
+	\end{tabular}
+\end{code}
+This line says for the index \icode{i} to the end of the list, execute lines 3 - 5.
+
+\begin{code}
+	\begin{tabular}{l|l}
+		3&\hspace{2 em}for k in range(i + 1, len(grades)):
+	\end{tabular}
+\end{code}
+For the index \icode{k} of item past the item at index \icode{i}, execute lines 4 and 5.
+
+\begin{code}
+	\begin{tabular}{l|l}
+		4&\hspace{4 em}if grades[k] > grades[i]:
+	\end{tabular}
+\end{code}
+This says: if the item past the one at index \icode{i} has a value greater than the one at \icode{i}, execute line 5.
+
+\begin{code}
+	\begin{tabular}{l|l}
+		5& \hspace{6 em}grades.insert(i, grades.pop(k))
+	\end{tabular}
+\end{code}
+Move the item with the greater value to the index \icode{i}, and shift the rest of the list down by one.
+
+\begin{code}
+	\begin{tabular}{l|l}
+		6& top\_grades = grades[:5]
+	\end{tabular}
+\end{code}
+Again, the crux move.
+
+
+\section{\icode{else} Statements}
+\icode{else} statements are executed if the condition in the \icode{if} statement is false. The syntax is as follows.
+
+\begin{center} \ttfamily
+	\begin{tabular}{|l}
+		if condition == True:\\
+		\hspace{2 em}\# runs if condition is true\\
+		else:\\
+		\hspace{2 em}\# runs if condition is false
+	\end{tabular}
+\end{center}
+Additionally, to check another condition in the else statement, one can use the statement \icode{elif}, which stands for else if.
+
+\begin{center} \ttfamily
+	\begin{tabular}{|l}
+		if condition == True:\\
+		\hspace{2 em}\# runs if condition is true\\
+		elif second == True:\\
+		\hspace{2 em}\# runs if second condition is true
+	\end{tabular}
+\end{center}
+
+\subsection{Example}
+There is a pre-defined list of attendees, called \icode{attd}. Write code that iterates through the list and if the person is Mr. Aiken, print \icode{It's been a while.} If the person is Tommy, print \icode{I saw your game}. If the person is Jack, print \icode{You're doing cool things}. For all other people, print \icode{Hi, I'm Ethan, nice to meet you.}
+
+\noindent \textbf{Solution:}
+
+\begin{code}
+	\begin{tabbing}
+		\hspace{8 cm} \= \hspace{3 cm} \kill 
+		for person in attn: \>\# iterates over the list\\
+		\hspace{2 em}if person == "Mr. Aiken":\>\# checks the person\\
+		\hspace{4 em}print("It's been a while.")\\
+		\hspace{2 em}elif person == "Tommy":\>\# if person is not Mr.Aiken, check if Tommy\\
+		\hspace{4 em}print("I saw your game")\\
+		\hspace{2 em}elif person == "Jack":\>\# if person is not Mr.Aiken or Tommy,\\ \>\# check if Jack\\
+		\hspace{4 em}print("You're doing cool things")\\
+		\hspace{2 em}else:\>\# for all other people\\
+		\hspace{4 em}print("Hi, I'm Ethan, nice to meet you.")
+	\end{tabbing}
+\end{code}
+
+\section{\icode{while} Loop}
+The \icode{while} loop executes a segment for any number of times \textit{while} the condition is true. 
+
+\begin{center} \ttfamily
+	\begin{tabular}{|l}
+		while condition == True:\\
+		\hspace{2 em}\# insert code\\
+		\hspace{2 em}\# here
+	\end{tabular}
+\end{center}
+
+
+\subsection{Example}
+\noindent Write code that is equivalent to 
+
+\begin{center} \ttfamily
+	\begin{tabular}{|l}
+		for i in range(n):\\
+		\hspace{2 em}\# insert code
+	\end{tabular}
+\end{center}
+using a while loop.\\
+\noindent\textbf{Solution:}
+\begin{code}
+	\begin{tabbing}
+		\hspace{3.5 in}\=\hspace{3.25 in} \kill
+		i = 0\\
+		while i < n - 1: \hspace{1 cm}\# n - 1 because that is the last integer to be executed\\
+		\hspace{2 em}\# insert code\\
+		\hspace{2 em}i += 1
+	\end{tabbing}
+\end{code}
+\vspace{.5 cm}
+The \icode{for} and \icode{while} loops also have an optional \icode{else} statement. For \icode{for} loops, the \icode{else} clause is executed when the loop runs to exhaustion; for the \icode{while} loop, the the \icode{else} clause is executed when the condition is false.
+\section{\icode{break}, \icode{continue}, and \icode{pass} Statements}
+The \icode{break} statement stops the smallest \icode{for} or \icode{while} loop, and then the code continues after the loops. The \icode{continue} statement is similar: instead of stopping the loop completely, it skips the rest of the code in the loop and starts with the next iteration.
+
+The \icode{pass} statement tells python to do nothing.
+
+\subsection{Example}
+\icode{L} is a list of positive integers, already defined. Write code that iterates through the list and prints \icode{even} if the number is even and \icode{odd} if the number is odd.
+
+\noindent \textbf{Solution:}
+\begin{code}
+	\begin{tabbing}
+		\hspace{4.5 cm} \= hspace{5 cm} \kill
+	for i in L:\>\# i is the number\\
+	\hspace{2 em}if i \% 2 == 0:\>\# if i is even\\
+	\hspace{4 em}print("even")\\
+	\hspace{4 em}continue\>\# if the number is even, skip the rest of \\
+	\>\# the code and continue with the next iteration\\
+	\hspace{2 em}print("odd")
+	\end{tabbing}
+\end{code}
+
+\section{Functions}
+Functions are ways to execute a code segment without rewriting it. The syntax is as follows.
+
+\begin{center} \ttfamily
+	\begin{tabular}{|l}
+		def myfunction(a, b, c):\\
+		\hspace{2 em}pass
+	\end{tabular}
+\end{center}
+This defines the function, having parameters \icode{a}, \icode{b}, and \icode{c}, so that when it is executed, it takes inputs. The function definition does not run the code in the function. To run the code, we use the syntax, below. Running the code using the function is called calling the function.
+
+\begin{center} \ttfamily
+	\begin{tabular}{|l}
+		myfunction(2, 4, 5)
+	\end{tabular}
+\end{center}
+Here \icode{2}, \icode{4}, and \icode{5} are random parameters. The \icode{return} statement is used for python to let it know what value is meant by calling a function. Consider the following function as an example.
+
+\begin{center} \ttfamily
+	\begin{tabular}{|l}
+		def myfunction(a, b, c):\\
+		\hspace{2 em}return b\\
+		h = myfunction(1, 2, 3)
+	\end{tabular}
+\end{center}
+Here, \icode{h} will have the value \icode{2}.
+
+\subsection{Examples}
+1. Write a function that takes two vectors, as tuples, and vectorally adds them. The functions should return a tuple. Test the function with \icode{(2, 6)} and \icode{(5, -3)}.
+
+\noindent \textbf{Solution:}
+\begin{code}
+	\begin{tabbing}
+		\hspace{8 cm} \= \hspace{5 cm} \kill
+		def Plus(a, b):\\
+		\hspace{2 em}return (a[0] + b[0], a[1] + b[1])\>\# adds components and returns the tuple\\
+		print(Plus((2, 6), (5, -3)))
+	\end{tabbing}
+\end{code}
+
+\begin{out}
+	(7, 3)
+\end{out}
+
+\newpage
+\noindent 2. Write a function that returns the average of two numbers, which are the parameters. Then use that function to write a new function that returns the area of trapezoid. 
+
+\noindent \textbf{Solution:}
+\begin{code}
+	\begin{tabbing}
+		\hspace{7 cm} \= \hspace{7 cm} \kill
+		def avg(a, b):\\
+		\hspace{2 em}return (a + b)/2\\
+		def trap\_area(parSide1, parSide2, l):\>\# parSide are the lengths of the parallel sides, \\
+		\>\# and l is the distance between them\\
+		\hspace{2 em}return avg(parSide1, parSide2) * l\>\# returns the area
+	\end{tabbing}
+\end{code}
+
+\noindent 3. Write a function that returns the absolute value of number. Then print the absolute value of -5, 20.5, and -7.2.
+
+\noindent \textbf{Solution:}
+\begin{code}
+	\begin{tabbing}
+		\hspace{7 cm} \= \hspace{7 cm} \kill
+		def ab\_val(n):\\
+		\hspace{2 em}return (n**2)**0.5\\
+		print(ab\_val(-5))\\
+		print(ab\_val(20.5))\\
+		print(ab\_val(-7.2))
+	\end{tabbing}
+\end{code}
+
+\noindent 4. Write a function that returns the second norm of a vector, which is a tuple of its components.
+
+\noindent \textbf{Solution:}
+\begin{code}
+	\begin{tabbing}
+		\hspace{7 cm} \= \hspace{7 cm} \kill
+		def L\_2(l):\\
+		\hspace{2 em}""" This returns the second norm, L\_2, of the entries \\
+		\hspace{2 em}of the tuple which is the argument"""\\
+		\hspace{2 em}s = 0\>\# s is the running sum inside the square root\\
+		\hspace{2 em}for i in l:\\
+		\hspace{4 em}s += i ** 2\\
+		\hspace{2 em}return s**0.5
+	\end{tabbing}
+\end{code}
+\subsection{Problem}
+\noindent Write a function that returns the magnitude of the point \icode{(X, Y)}, which is its input. Test your function with \icode{(3, 4)} and \icode{(-3, 4)}.\\
+\textbf{Solution:}
+
+\begin{code}
+	\begin{tabbing}
+		\hspace{5 cm} \= \hspace{5 cm} \kill
+		def magnitude(a):\\
+		\hspace{2 em}return (a[0]**2 + a[1]**2)**0.5\\
+		print(magnitude((3, 4)))\\
+		print(magnitude((-3, 4)))
+	\end{tabbing}
+\end{code}
+
+
+
+\newpage
+\section{Check Your Understanding: Boss Mode}
+1. Say we have two square matricies of the same dimentions, \icode{A} and \icode{B}, which we wish to multiply. Their syntax is as follows:
+
+\begin{center} \ttfamily
+	\begin{tabular}{|l}
+		A = [\\
+		\phantom{=   }[1, 2, 3],\\
+		\phantom{=   }[4, 5, 6],\\
+		\phantom{=   }[7, 8, 9]\\
+		]
+	\end{tabular}
+\end{center}
+\icode{A} here having an order of three is only for an example to show how it is formatted. \icode{A} and \icode{B} have an arbitrary order. Write a function that returns matrix \icode{C}, which is the product \icode{AB}.\\
+\noindent \textbf{Solution:}
+\begin{code}
+\begin{tabbing}
+	\hspace{5 cm} \= \hspace{5 cm} \kill
+	def times(A, B):\\
+		\hspace{2 em}C = []\\
+		\hspace{2 em}for b in range(len(A)):  \# b is each row of A\\
+			\hspace{4 em}s = []  \# s is the row in C\\
+			\hspace{4 em}for i in range(len(A)):  \# i is each column in B\\
+				\hspace{6 em}k = 0  \# k is the running element of C\\
+				\hspace{6 em}for a in range(len(A)):  \# a is each position in the row of A and column in B\\
+					\hspace{8 em}k += A[b][a] * B[a][i]\\
+				\hspace{6 em}s.append(k)\\
+			\hspace{4 em}C.append(s)\\
+		\hspace{2 em}return C
+\end{tabbing}
+\end{code}
+
+\noindent 2. Write code that makes a list of all primes less than 100,000.\\
+\noindent \textbf{Solution:}
+% here is solution: (runtime less than 1 second on a laptop)
+\begin{code}
+\begin{tabbing}
+	\hspace{5 cm} \= \hspace{5 cm} \kill
+	primes = []\\
+	for m in range(2, 100000):\\
+	    \hspace{2 em}for i in range(2, int((m**0.5)//1 + 1)):\\
+	        \hspace{4 em}if m \% i == 0:\\
+	            \hspace{6 em}break\\
+	    \hspace{2 em}else:\\
+	        \hspace{4 em}primes.append(m)
+	
+\end{tabbing}
+\end{code}
+\end{document}
