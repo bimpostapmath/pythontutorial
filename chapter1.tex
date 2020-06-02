@@ -31,7 +31,7 @@ In the directions for problems, here is the necessary vocabulary:\\
 \indent \ \textit{Find} means use your computer if you are confused.\\
 When you need help, there are many resources you can go to. You can ask your fellow students; you can go to Dr.~Grove's student hours; you can contact Dr.~Grove (as long as it is not the night/morning before the assignment is due). Additionally, you can look online (not recommended as the first place to look).
 
-The point that should be clear is that learning Python, or anything new, requires time and perseverance. 
+Additionally, we recommend that when doing the problems, check your work using your computer and/or problems in the book (to plug in examples).
 \subsection{Key and Symbols}
 \begin{multicols}{2}
 \begin{tcolorbox}[width=.5\textwidth]
@@ -74,8 +74,8 @@ A \textbf{comment} is words in the code that is not read by python. In other wor
 \define{\# this is a comment and does not affect the output of the program}
 \noindent With these tools, let's examine a few examples. 
 
-\section{Example}
-1. Cover the comments (to the right of \#) and the output. Try to understand what the code is doing and predict what the output will be. Then check your answers.
+\subsection{Example}
+Cover the comments (to the right of \#) and the output. Try to understand what the code is doing and predict what the output will be. Then check your answers.
 \vspace{1 mm}
 \begin{tcolorbox}
 	\ttfamily
@@ -90,8 +90,8 @@ A \textbf{comment} is words in the code that is not read by python. In other wor
 	5
 \end{tcolorbox}
 
-\section{Problem}
-1. Predict what will be in the output for the following code.
+\subsection{Problem}
+Predict what will be in the output for the following code.
 \begin{tcolorbox}
 	\ttfamily
 	\begin{tabbing}
@@ -120,10 +120,12 @@ Much like a calculator, Python can perform operations, which are summarized in t
 	\item ``+" denotes addition
 	\item ``()" denotes groupings of calculations
 	\item ``$-$" denotes subtraction
+	\item ``\icode{a}//\icode{b}" returns $c$ if $\text{\icode{a}} = c \cdot \text{\icode{b}} + r$
+	\item ``\icode{a} \% \icode{b}" returns $r$ if $\text{\icode{a}} = c \cdot \text{\icode{b}} + r$
 	
 \end{itemize}
 \end{multicols}
-\section{Examples}
+\subsection{Examples}
 \noindent1. Cover the comments. Try to understand what the code is doing and predict what the output will be. Then check your answers.
 \vspace{1 mm}
 \begin{tcolorbox}
@@ -160,10 +162,30 @@ Much like a calculator, Python can perform operations, which are summarized in t
 	\ttfamily
 	4
 \end{tcolorbox}
+
+\subsection{Problem}
+\noindent Define two variables, \icode{n} and \icode{x}. Set their values to be 21, and 5, respectively. Write code that produces in the output: their product, \icode{n}$^\text{\icode{x}}$, and $\lfloor \frac{\text{\icode{n}}}{\text{\icode{x}}} \rfloor$.
+\vspace{1 mm}
+\begin{tcolorbox}
+	\ttfamily
+	\vspace{3 cm}
+%n = 21
+%x = 5
+%print(n*x)
+%print(n**x)
+%print(n//x)
+\end{tcolorbox}
+\begin{tcolorbox}[colback=output]
+	\ttfamily
+	105\\
+	4084101\\
+	4
+\end{tcolorbox}
+
 \section{Strings}
 In addition to dealing with numbers, as shown above, variables can store \textbf{strings}, which are a data type that stores characters. A string is a sequence of characters surrounded by quotes.
 \define{Str = "Hello world"}
-Here the variable \texttt{Str} stores the string \texttt{"Hello world"}.
+Here the variable \texttt{Str} stores the string \texttt{"Hello world"}. Additionally, the function \icode{str(i)} turns the value \icode{i} into a string.
 
 What do you think happens when we print a string? Well, let's see.
 
@@ -180,8 +202,7 @@ What do you think happens when we print a string? Well, let's see.
 \end{tcolorbox}
 As we can see, it prints the characters within the double quotes.
 
-\newpage
-\section{Experimenting (Problems)}
+\subsection{Experimenting (Problems)}
 \begin{multicols}{2}
 \noindent1. Find the output for the following code.
 \begin{tcolorbox}[width=.5\textwidth]
@@ -213,8 +234,8 @@ As we can see, it prints the characters within the double quotes.
 \end{multicols}
 \section{More on Printing}
 It is possible to print a string and a variable in one print. We can do this by separating the string and the variable by a comma or a $+$ sign. The difference is that the comma-separated values automatically insert a space between the two in the output.
-\section{Example}
-\noindent1. Cover the comments. Try to understand what the code is doing and predict what the output will be. Then check your answers.
+\subsection{Example}
+\noindent Cover the comments. Try to understand what the code is doing and predict what the output will be. Then check your answers.
 \vspace{1 mm}
 \begin{tcolorbox}
 	\ttfamily
@@ -228,7 +249,16 @@ It is possible to print a string and a variable in one print. We can do this by 
 \begin{tcolorbox}[colback=output]
 	\ttfamily I am 20 years old.
 \end{tcolorbox}
-
+\subsection{Problem}
+\noindent There are three pre-defined variables, bar1, bar2, and bar3, each having a value of a positive integer. Write code that produces the values of these three side by side, with no spaces in between.
+\vspace{1 mm}
+\begin{code}
+\vspace{1.5 cm}
+%print(str(bar1) + str(bar2) + str(bar3))
+\end{code}
+\begin{out}
+378393
+\end{out}
 \section{Data Types}
 Data types are ways to store data, and so far we have seen 3: integers, strings, and floating point numbers (meaning there is a decimal point). Here we discuss three more: lists, tuples, and dictionaries.
 \subsection{Lists}
@@ -243,8 +273,8 @@ So in order to ``grab" the $n$th item in a list with at least $n$ entries, we ty
 \define{lst[n - 1].}
 This returns the data in the $n$th entry in the list. This is because the number in brackets is the index of the item we wish to access, and since indexing starts at 0, we subtract 1. Lists also support slicing, which returns a subset of the list. The way to do this is \icode{list[a:b]}. This returns a new list with the entries in \icode{list} from index \icode{a} to the index one less than \icode{b}. If one is not present, it assumes to start at the index 0 or end at the last index. 
 
-\subsubsection{Example}
-\noindent1. {\ttfamily Bdays} is a list of birthdays. If Carter's birthday is the third in the list and Benjamin's is the first, write code that prints their name then a colon, then their birthday from the list.
+\subsubsection{Problem}
+\noindent {\ttfamily Bdays} is a list of birthdays as a string \icode{"Month day, year"}, already defined. If Atharva's birthday is the third in the list and Arian's is the first, write code that prints their name then a colon, then their birthday from the list.
 \vspace{1 mm}
 
 \noindent\textbf{Solution:}
@@ -252,14 +282,14 @@ This returns the data in the $n$th entry in the list. This is because the number
 	\ttfamily
 	\begin{tabbing}
 		\hspace{3.25 in}\=\hspace{3.25 in} \kill
-		Bdays = ["December 1, 2010", "April 30, 2011", "June 15, 2012", "January 1, 2013"]\>\\
-		print("Carter: " + Bdays[2])\>\\
-		print("Benjamin: " + Bdays[0])\>
+		\phantom{Bdays = ["December 1, 2010", "April 30, 2011", "June 15, 2012", "January 1, 2013"]}\>\\ % not necessary, just an example
+		\phantom{print("Atharva: " + Bdays[2])}\>\\
+		\phantom{print("Arian: " + Bdays[0])}\>\\
 	\end{tabbing}
 \end{tcolorbox}
 \begin{tcolorbox}[colback=output]
-	\ttfamily Carter: June 15, 2012\\
-	Benjamin: December 1, 2010
+	\ttfamily Atharva: Month 15, 2012 \ \# just an example\\
+	Arian: December 1, 2010 \ \# just an example
 \end{tcolorbox}
 \vspace{.5 cm}
 
@@ -286,15 +316,25 @@ Below is a table of list methods.
 	\>\icode{list.index(item)}\>This returns the index of the first occurence of\\ \>\>\icode{item}.
 \end{tabbing}
 
-\subsubsection{Problem}
-If we have a list of people \icode{queue}. We want this list to serve the purpose of first in first out, where the first person added to this list is the first to leave. What method should be called to add a person whose name is \icode{Name}? What method should be called to remove a person from \icode{queue}?\\[.2 cm]
+\subsubsection{Problems}
+1. If we have a list of people \icode{queue}. We want this list to serve the purpose of first in first out, where the first person added to this list is the first to leave. What method should be called to add a person whose name is \icode{Name}? What method should be called to remove a person from \icode{queue}?\\[.2 cm]
 \noindent\textbf{Solution:}
 
 \begin{tcolorbox}[colback=writing]
-	\ttfamily \phantom{queue.append("Name")}\\
-	\phantom{queue.pop(0)}
+	\ttfamily \phantom{queue.append("Name")}\\  %use to add the person named Name, because the names are stored as strings, and append because people go from the back to the front
+	\phantom{queue.pop(0)}  % removes and returns the person at the front of the queue.
 \end{tcolorbox}
 
+\noindent 2. We have the below list, \icode{T}. Write code that moves the second item to the second to last position, switches the values in the list (withing the list), and switches the first and last item, in that order.
+
+\begin{code}
+	T = ["first", ["x", "y"], 923, "last"]
+\vspace{3 cm}
+%T.insert(2, T.pop(1))
+%T[2].append(T[2].pop(0))
+%T.insert(0, T.pop(len(T) - 1))
+%T.insert(len(T) - 1, T.pop(1))
+\end{code}
 
 \subsection{Tuples}
 Tuples are \textbf{immutable}, which means that their entries cannot be changed. Like lists, their entries are comma-separated, but they are enclosed with parentheses.
@@ -304,7 +344,10 @@ Tuples are also indexed, so {\ttfamily tup[3]} would return 1024.
 Tuples, like lists, also support their own methods: {\ttfamily count()} and {\ttfamily index()}. These are similar to the list methods of the same name, except these are for tuples. Namely, {\ttfamily count(v)} returns the number of times a value {\ttfamily v} occurs in the tuple, and {\ttfamily index(v)} returns the smallest index where the value {\ttfamily v} is stored. The way to call these methods is defined below.
 \define{tuple.count(v)}
 \define{tuple.index(v)}
-
+Additionally, multiple variables can be assigned in one line. Multiple assignment has the following syntax.
+\define{varn, varn1, varn2 = "hello world", 49, 42}
+Tuples support multiple assignment, so the below is the same as the previous line.
+\define{varn, varn1, varn2 = ("hello world", 49, 42)}
 \subsection{Dictionaries}
 Dictionaries store values, and unlike lists, each value has an associated \textbf{key}. A key is a reference for the value. A key can be thought of as a page number in a book, and the value can be thought of as the words on that page in the book. Unlike the book, keys can be any immutable type. The syntax of creating one is {\ttfamily key: value} pairs separated by commas and enclosed in brackets.
 \define{D = \{"a": 50, "b": 51, "c": 80, "d": 81\}}
