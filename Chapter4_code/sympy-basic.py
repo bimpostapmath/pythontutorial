@@ -11,5 +11,8 @@ init_printing()
 print(x+1)
 print(Integral(sqrt(1/x),x))
 # Relationship
+
+# ^ means logical exclusive or
 print(True^False)
 print(True^True)
+
