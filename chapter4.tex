@@ -32,7 +32,6 @@ frame=tb,                         % Any extra options here
 showstringspaces=false            % 
 }}
 
-
 % Python environment
 \lstnewenvironment{python}[1][breaklines]
 {
@@ -58,10 +57,11 @@ showstringspaces=false            %
 \par When writing code, we might use repeating code, or sometimes we want to keep the code organized by splicing a big chunk of code into many small parts. Using \texttt{modules} would finish this perfectly
 \section{Easy example}
 For instance, this is a module if you want to write a function that outputs "hello" and the name when you input a name.
-\begin{python}
-	def hello(name):
+\begin{lstlisting}[language=python,caption=Simple example of module (function)]
+def hello(name):
 		print("hello"+name)
-\end{python}
+\end{lstlisting}
+
 It seems like a function, right? However, a module includes \textbf{more than functions, since it can include class object, or even modules too.}
 
 Once again, the reason why we use modules is that it makes a function \textbf{flexible} and we can import any functoins we want with only one line.
@@ -82,15 +82,16 @@ Well the answer is
 \section{Tricks in using modules}
 \subsection{Renaming the modules}
 Imagining one day you are just too lazy to import the module, or the module's name is too long (like matploblib.pyplot), you could try
-\begin{python}
+\begin{lstlisting}[language=python,caption=alias]
 	import  matplotlib.pyplot as plt
-\end{python}
+\end{lstlisting}
+
 and now whenever you want to use the module 'matplotlib.pyplot', you can write it as 'plt'
 \subsection{Importing part of the module}
 When you only want to import a little bit of function from a bloated module, just use
-\begin{python}
+\begin{lstlisting}[language=python,caption=import part]
 	from hellom.py import hello
-\end{python}
+\end{lstlisting}
 and now you only have one function left! If you have more than one functoin in hellom.py and you only want to import the hello function, this is very useful.
 \section{Some Common Modules}
 Here we just introduce some interesting/useful modules
@@ -102,6 +103,8 @@ Here we just introduce some interesting/useful modules
 	\item \texttt{scipy} for advanced things abuot math, built-in.
 	\item \texttt{matplotlib, numpy, pandas} if you want to be a successful data-scientist.
 \end{itemize}
+\section{Package example: scipy}
+
 \section{Exercises}
 \begin{enumerate}
 	\item Fill in the sentence based on what you learned here
@@ -127,19 +130,19 @@ Disclaimer: This answer is only for reference!
 		\end{enumerate}
 	\item Below are the code
 	\\ For the module circle\_m.py
-		\begin{python}
-			from math import pi
-			def circum(radius):
-				return(2*pi*radius)
-			def area(radius)
-				return(pi*radius**2)
-		\end{python}
-		\\ The following is the code for importing the module
-		\begin{python}
-			import circle\_m.py
-			print(circle\_m.circum(1))
-			print(circle\_m.area(1))
-		\end{python}
+	\begin{lstlisting}[language=python,caption=]
+	from math import pi
+	   def circum(radius):
+		    return(2*pi*radius)
+	   def area(radius)
+		    return(pi*radius**2)
+	\end{lstlisting}
+	\begin{lstlisting}[language=python,caption=Pt.2]
+		import circle_m.py
+		print(circle_m.circum(1))
+		print(circle_m.area(1))
+	\end{lstlisting}
+
 	\item Write anything you like! The following is one I like:
 		\\ I really like the 'tempfile' module from python, becuase it can create a temporary file to help me automate the works without messing up my system. For instance, the function tempfile.TemporaryFile has specific parameters like setting the right to write the file, the location, or even the encoding of it. It really helps a lot.
 \end{enumerate}

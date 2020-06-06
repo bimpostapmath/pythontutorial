@@ -94,7 +94,6 @@ That's basically why class is so useful
 \begin{python}
 	def __init__ (self,age,name,grade,gender):
 \end{python}
-<<<<<<< HEAD
 \par In this line, we create a \textbf{function} (read the chapter before) called \textbf{init}, 
 as known as the \textbf{initiate} function.
 The init function is always executed when the class is being initiated.
@@ -141,12 +140,12 @@ Create a parent class, child class
 \par This is basically creating two classes, while one of them is from the other one class.
 For example, we first create a 'Parent' Class:
 \begin{python}
-	class Student:
-		def \_\_init\_\_(self, first-name,last-name, grade):
-			self.firstname=first-name
-			self.lastname=last-name
-		def printname(self):
-			print(self.firstname, self.lastname)
+  class Student:
+    def __init__(self, first-name,last-name, grade):
+      self.firstname=first-name
+      self.lastname=last-name
+    def printname(self):
+		 print(self.firstname, self.lastname)
 \end{python}
 \par Now we create the children class called 'junior'
 \begin{python}
@@ -158,16 +157,28 @@ For example, we first create a 'Parent' Class:
 \par We can also use the \_\_init\_\_ Function here, while there would be another function called \texttt{super}
 \begin{python}
 	class Junior (Student):
-		def \_\_init\_\_(self, first-name, last-name, grade, year):
-		super().\_\_init\_\_(fist-name, last-name, grade)
+		def __init__(self, first-name, last-name, grade, year):
+		super().__init__(fist-name, last-name, grade)
 		self.graduationyear=year
 \end{python}
 \par Here the properties from the parents are inherited.
 \subsection{Add properties}
 \subsection{Add methods}
 \section{Iterators}
+Iterator is something that traverses, or goes through all the elements in a data structure (like lists, tuples, dictionaries, etc).
+
+Now we write an example for the basic iterator
+\begin{python}
+mytuple = ("apple", "banana", "cherry")
+myit = iter(mytuple)
+
+print(next(myit))
+print(next(myit))
+print(next(myit))
+\end{python}
+
+When connecting with the iterator with the \textbf{classes and objects}, it is very important to implement the methods 
 \section{Scope}
-\section{Modules}
 
 %TODO: explain
 \par In this line, we create a \textbf{function} (read the chapter before) called \textbf{init}. It is used to \textbf{initiate} the object. All the classes have a function called 'init', which is always executed when the class is being initiated. When we execute this function, we do the operations to assign \textbf{basic values}. Compared to other functions, this one is executed \textit{automatically}.
