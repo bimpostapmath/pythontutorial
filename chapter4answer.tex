@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+% Python Setup https://tex.stackexchange.com/questions/83882/how-to-highlight-python-syntax-in-latex-listings-lstinputlistings-command
+%\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{tcolorbox}
+%\usepackage{biblatex}
+% Default fixed font does not support bold face
+%\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+%\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+%\usepackage{biblatex}
+%\addbibresource{chapter5bib.bib}
+
+% Python style for highlighting
+\newcommand\pythonstyle{
+\lstset{
+language=Python,
+basicstyle=\ttm,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            % 
+}}
+
+% Python environment
+\lstnewenvironment{python}[1][breaklines]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+%\bibliography{chapter5bib.bib}
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+\title{Python Tutorial on Module - Answers}
+\author{Leo Zipeng Lin}
+\begin{document}
+\maketitle
+\section{Answers}:
+Disclaimer: This answer is only for reference!
+\begin{enumerate}
+	\item The answers are below:
+		\begin{enumerate}
+			\item \textbf{import} math	
+			\item \textbf{from} math import \textbf{pi}
+			\item \textbf{import} numpy from \textbf{as} np 
+		\end{enumerate}
+	\item Below are the code
+	\\ For the module circle\_m.py
+	\begin{lstlisting}[language=python,caption=]
+	from math import pi
+	   def circum(radius):
+		    return(2*pi*radius)
+	   def area(radius)
+		    return(pi*radius**2)
+	\end{lstlisting}
+	\begin{lstlisting}[language=python,caption=Pt.2]
+		import circle_m.py
+		print(circle_m.circum(1))
+		print(circle_m.area(1))
+	\end{lstlisting}
+
+	\item Write anything you like! The following is one I like:
+		\\ I really like the 'tempfile' module from python, becuase it can create a temporary file to help me automate the works without messing up my system. For instance, the function tempfile.TemporaryFile has specific parameters like setting the right to write the file, the location, or even the encoding of it. It really helps a lot.
+\end{enumerate}
+
+\end{document}
