@@ -493,18 +493,27 @@ Here, \icode{h} will have the value \icode{2}.
 
 \noindent 2. Write code that makes a list of all primes less than 100,000.\\
 \noindent \textbf{Solution:}
-% here is solution: (runtime less than 1 second on a laptop)
+% here is solution: (runtime less than 0.5 second on a laptop)
 \begin{code}
 \begin{tabbing}
 	\hspace{5 cm} \= \hspace{5 cm} \kill
-	primes = []\\
-	for m in range(2, 100000):\\
-	    \hspace{2 em}for i in range(2, int((m**0.5)//1 + 1)):\\
-	        \hspace{4 em}if m \% i == 0:\\
+	primes = [2]\\
+	f = 0\\
+	for i in range(3, 100000, 2):\\
+	    \hspace{2 em}while primes[f] <= (int((i)**0.5)) and f < len(primes)-1:\\
+		\hspace{4 em}if i \% primes[f] == 0:\\
+		    \hspace{6 em}f = 0\\
 	            \hspace{6 em}break\\
+		\hspace{4 em}f += 1\\
 	    \hspace{2 em}else:\\
-	        \hspace{4 em}primes.append(m)
-	
+	        \hspace{4 em}primes.append(m)\\
+	        \hspace{4 em}f = 0\\
+	# printing (not necessary)\\
+	f = 0\\
+	while (15+f) < len(primes)-1:\\
+	    \hspace{2 em}print(primes[f:f+15])\\
+	    \hspace{2 em}f += 15\\
+	print(primes[f:])
 \end{tabbing}
 \end{code}
 \end{document}
