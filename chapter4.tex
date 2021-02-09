@@ -29,7 +29,7 @@ emph={MyClass,__init__},          % Custom highlighting
 emphstyle=\ttb\color{deepred},    % Custom highlighting style
 stringstyle=\color{deepgreen},
 frame=tb,                         % Any extra options here
-showstringspaces=false            % 
+showstringspaces=false            %
 }}
 
 % Python environment
@@ -56,52 +56,55 @@ showstringspaces=false            %
 \section{Introduction}
 \par When writing code, we might use repeating code, or sometimes we want to keep the code organized by splicing a big chunk of code into many small parts. Using \texttt{modules} would finish this perfectly
 \section{Easy example}
-For instance, this is a module if you want to write a function that outputs "hello" and the name when you input a name.
-\begin{lstlisting}[language=python,caption=Simple example of module (function)]
+For instance, this is a module if you want to write a function that outputs `hello` and the name when you input a name.
+\begin{lstlisting}[language=python,caption=Simple example of module (function),pos=b]
 def hello(name):
-		print("hello"+name)
+        print("hello "+name)
 \end{lstlisting}
 
 It seems like a function, right? However, a module includes \textbf{more than functions, since it can include class object, or even modules too.}
 
 Once again, the reason why we use modules is that it makes a function \textbf{flexible} and we can import any functoins we want with only one line.
 \section{How to import a module?}
-After reading the function chapter (chapter 3), you will understand functions and therefore might know to write some modules at once, but you might ask :"how could I import them?"
+After reading the function chapter (chapter 3), you will understand functions and therefore might know to write some modules at once, but you might ask :`how could I import them?`
 
 Well the answer is
 \begin{enumerate}
-	\item save the file as hellom.py
-	\item In another file add "import hello"
-	\item now call the \textbf{function} ! You can call it by using hellom.hello("Tom")
+    \item save the file as hellom.py
+    \item In another file add `import hellom`
+    \item now call the \textbf{function} ! You can call it by using hellom.hello(`Tom`)
 \end{enumerate}
-		You might ask "Why do we have to name the file such a random name?" This is because of two reasons
-		\begin{enumerate}
-			\item If you just name the file as simple "hello", it might have the same name as the module you installed (like since it has a actually common package called "common", naming a package "random" would definitely cause error, and therefore you should be careful about the naming convention.)
-			\item Naming the file "hello-module" doesn't work since the compiler won't identify it (it is not a identifier), while naming it as "hellom.py" or "hello\_m.py" is allowed
-		\end{enumerate}
+        You might ask `Why do we have to name the file such a random name?` This is because of two reasons
+        \begin{enumerate}
+            \item If you just name the file as simple `hello`, it might have the
+                same name as the module you installed (like since it has a
+                actually common package called `common`, naming a package
+                `random` would definitely cause error, and therefore you should be careful about the naming convention.)
+            \item Naming the file `hello-module` doesn't work since the compiler won't identify it (it is not a identifier), while naming it as `hellom.py` or `hello\_m.py` is allowed
+        \end{enumerate}
 \section{Tricks in using modules}
 \subsection{Renaming the modules}
 Imagining one day you are just too lazy to import the module, or the module's name is too long (like matploblib.pyplot), you could try
 \begin{lstlisting}[language=python,caption=alias]
-	import  matplotlib.pyplot as plt
+    import  matplotlib.pyplot as plt
 \end{lstlisting}
 
 and now whenever you want to use the module 'matplotlib.pyplot', you can write it as 'plt'
 \subsection{Importing part of the module}
 When you only want to import a little bit of function from a bloated module, just use
 \begin{lstlisting}[language=python,caption=import part]
-	from hellom.py import hello
+    from hellom.py import hello
 \end{lstlisting}
 and now you only have one function left! If you have more than one functoin in hellom.py and you only want to import the hello function, this is very useful.
 \section{Some Common Modules}
 Here we just introduce some interesting/useful modules
 \begin{itemize}
-	\item \texttt{dir} can show you all the functions in your modules. This is a built-in module
-	\item \texttt{os} can help you do things around your laptop itself. built-in.
-	\item \texttt{random} for random numbers, built-in.
-	\item \texttt{math} for basic things about math, built-in.
-	\item \texttt{scipy} for advanced things abuot math, built-in.
-	\item \texttt{matplotlib, numpy, pandas} if you want to be a successful data-scientist.
+    \item \texttt{dir} can show you all the functions in your modules. This is a built-in module
+    \item \texttt{os} can help you do things around your laptop itself. built-in.
+    \item \texttt{random} for random numbers, built-in.
+    \item \texttt{math} for basic things about math, built-in.
+    \item \texttt{scipy} for advanced things abuot math, built-in.
+    \item \texttt{matplotlib, numpy, pandas} if you want to be a successful data-scientist.
 \end{itemize}
 \section{Package example: sympy}
 
@@ -116,21 +119,21 @@ here, there is something for operations
 \pythonexternal{./Chapter4_Code/sympy-operation.py}
 \section{Exercises}
 \begin{enumerate}
-	\item Fill in the sentence based on what you learned here
-		\begin{enumerate}
-			\item $\rule{1cm}{0.10mm}$ math
-			\item $\rule{1cm}{0.10mm}$ math.pi $\rule{1cm}{0.10mm}$ math
-			\item $\rule{1cm}{0.10mm}$ numpy $\rule{1cm}{0.10mm}$ np
-		\end{enumerate}
-	\item Write a program (module) for the following feature and then write how you will import it.
-		\\ The module will take a radius of a circle and has two functions: one is output the circumference of the circle and then the area of the circle.
-		\\ Then, import the module and output the two quantities of circles above.
-	\item (Open-Question) Find \texttt{1} package (module) you like and write something about it.
+    \item Fill in the sentence based on what you learned here
+        \begin{enumerate}
+            \item $\rule{1cm}{0.10mm}$ math
+            \item $\rule{1cm}{0.10mm}$ math.pi $\rule{1cm}{0.10mm}$ math
+            \item $\rule{1cm}{0.10mm}$ numpy $\rule{1cm}{0.10mm}$ np
+        \end{enumerate}
+    \item Write a program (module) for the following feature and then write how you will import it.
+        \\ The module will take a radius of a circle and has two functions: one is output the circumference of the circle and then the area of the circle.
+        \\ Then, import the module and output the two quantities of circles above.
+    \item (Open-Question) Find \texttt{1} package (module) you like and write something about it.
 \end{enumerate}
 \newpage
 \section{Reference}
 \begin{enumerate}
-	\item “SymPy Tutorial.” SymPy Tutorial - SymPy 1.6 Documentation, \\ url: docs.sympy.org/latest/tutorial/index.html.
+    \item “SymPy Tutorial.” SymPy Tutorial - SymPy 1.6 Documentation, \\ url: docs.sympy.org/latest/tutorial/index.html.
 \end{enumerate}
 \end{document}
 
