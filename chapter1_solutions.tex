@@ -18,7 +18,8 @@
 \newenvironment{out}{\begin{tcolorbox}[colback=output]\ttfamily}{\end{tcolorbox}}
 \begin{document}
 \begin{center}
-{\LARGE\textbf{Learning Python I}}
+{\LARGE\textbf{Learning Python I}}\\[.25 cm]
+{\LARGE\textbf{Solutions}}
 \end{center}
 \vspace{0.5 cm}
 \section{How to Approach This Tutorial}
@@ -108,7 +109,7 @@ Predict what will be in the output for the following code.
 \noindent\textbf{Solution:}
 \begin{tcolorbox}[colback=output]
 	\ttfamily 
-	\phantom{11}\\
+	11
 \end{tcolorbox}
 \section{Operations}
 Much like a calculator, Python can perform operations, which are summarized in the table below.
@@ -166,15 +167,13 @@ Much like a calculator, Python can perform operations, which are summarized in t
 \subsection{Problem}
 \noindent Define two variables, \icode{n} and \icode{x}. Set their values to be 21, and 5, respectively. Write code that produces in the output: their product, \icode{n}$^\text{\icode{x}}$, and $\lfloor \frac{\text{\icode{n}}}{\text{\icode{x}}} \rfloor$.
 \vspace{1 mm}
-\begin{tcolorbox}
-	\ttfamily
-	\vspace{3 cm}
-%n = 21
-%x = 5
-%print(n*x)
-%print(n**x)
-%print(n//x)
-\end{tcolorbox}
+\begin{code}
+n = 21\\
+x = 5\\
+print(n*x)\\
+print(n**x)\\
+print(n//x)
+\end{code}
 \begin{tcolorbox}[colback=output]
 	\ttfamily
 	105\\
@@ -215,7 +214,7 @@ As we can see, it prints the characters within the double quotes.
 \noindent\textbf{Solution:}
 \begin{tcolorbox}[colback=output,width=.5\textwidth]
 	\ttfamily 
-	\phantom{`Have you seen X's code?'}\\
+	`Have you seen X's code?'\\[2 em]
 \end{tcolorbox}
 
 \noindent2. Find the output for the following code.
@@ -229,7 +228,8 @@ As we can see, it prints the characters within the double quotes.
 \noindent\textbf{Solution:}
 \begin{tcolorbox}[colback=output,width=.5\textwidth]
 	\ttfamily 
-	\phantom{error}\\
+	Error, because `Have you seen X' is a string,\\
+	 and the rest does not compute.
 \end{tcolorbox}
 \end{multicols}
 \section{More on Printing}
@@ -253,8 +253,7 @@ It is possible to print a string and a variable in one print. We can do this by 
 \noindent There are three pre-defined variables, bar1, bar2, and bar3, each having a value of a positive integer. Write code that produces the values of these three side by side, with no spaces in between.
 \vspace{1 mm}
 \begin{code}
-\vspace{1.5 cm}
-%print(str(bar1) + str(bar2) + str(bar3))
+print(str(bar1) + str(bar2) + str(bar3))
 \end{code}
 \begin{out}
 378393
@@ -282,9 +281,8 @@ This returns the data in the $n$th entry in the list. This is because the number
 	\ttfamily
 	\begin{tabbing}
 		\hspace{3.25 in}\=\hspace{3.25 in} \kill
-		\phantom{Bdays = ["December 1, 2010", "April 30, 2011", "June 15, 2012", "January 1, 2013"]}\>\\ % not necessary, just an example
-		\phantom{print("Atharva: " + Bdays[2])}\>\\
-		\phantom{print("Arian: " + Bdays[0])}\>\\
+		print("Atharva: " + Bdays[2])\\
+		print("Arian: " + Bdays[0])
 	\end{tabbing}
 \end{tcolorbox}
 \begin{tcolorbox}[colback=output]
@@ -321,20 +319,18 @@ Below is a table of list methods.
 \noindent\textbf{Solution:}
 
 \begin{tcolorbox}[colback=writing]
-	\ttfamily \phantom{queue.append("Name")}\\  %use to add the person named Name, because the names are stored as strings, and append because people go from the back to the front
-	\phantom{queue.pop(0)}  % removes and returns the person at the front of the queue.
+\icode{queue.append("Name")} is used to add the person named \icode{Name}, because the names are stored as strings, and append because people go from the back to the front. \icode{queue.pop(0)} is used to remove and return the person at the front of the queue, at index 0.
 \end{tcolorbox}
 
 \noindent 2. We have the below list, \icode{T}. Write code that moves the second item to the second to last position, switches the values in the list (withing the list), and switches the first and last item, in that order.
 
 \noindent\textbf{Solution:}
 \begin{code}
-	T = ["first", ["x", "y"], 923, "last"]
-\vspace{3 cm}
-%T.insert(2, T.pop(1))
-%T[2].append(T[2].pop(0))
-%T.insert(0, T.pop(len(T) - 1))
-%T.insert(len(T) - 1, T.pop(1))
+T = ["first", ["x", "y"], 923, "last"]\\
+T.insert(2, T.pop(1))\\
+T[2].append(T[2].pop(0))\\
+T.insert(0, T.pop(len(T) - 1))\\
+T.insert(len(T) - 1, T.pop(1))
 \end{code}
 
 \subsection{Tuples}
@@ -361,10 +357,8 @@ Here we have dictionary \icode{D}, and the code to return the value stored with 
 \noindent\textbf{Solution:}
 \begin{tcolorbox}
 	\ttfamily D = \{(3, 4): 5, (4, 3): 5, (1, 1): 2**(.5)\}\\
-	\phantom{D[(4, 3)]}\\
-	\phantom{print((X**2 + Y**2)**(0.5))}\\
-	\vspace{3 cm}
-	\phantom{u}
+	D[(4, 3)]\\
+	print((X**2 + Y**2)**(0.5))
 \end{tcolorbox}
 
 \end{document}

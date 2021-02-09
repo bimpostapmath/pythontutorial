@@ -15,10 +15,11 @@
 \newcommand{\icode}[1]{{\ttfamily #1}}
 \newenvironment{code}{\begin{tcolorbox}\ttfamily}{\end{tcolorbox}}
 \newenvironment{out}{\begin{tcolorbox}[colback=output]\ttfamily}{\end{tcolorbox}}
-\newenvironment{words}{\begin{tcolorbox}[colback=writing]\ttfamily}{\end{tcolorbox}}
+\newenvironment{words}{\begin{tcolorbox}[colback=writing]}{\end{tcolorbox}}
 \begin{document}
 \begin{center}
-	{\LARGE\textbf{Learning Python II}}
+	{\LARGE\textbf{Learning Python II}}\\[.25 cm]
+	{\LARGE\textbf{Solutions}}
 \end{center}
 \vspace{0.5 cm}
 \section{\icode{for} Loop}
@@ -100,18 +101,11 @@ The following code is an attempt to turn the dictionary \icode{bdays} into a lis
 	\phantom{i}\hspace{2 em}"Richard Feynman": "May 18, 1918",\\
 	\}
 	
-	bdays\_list = [bdays[i], i for i in bdays]\\
-	% should be
-	% bdays\_list = [(i, bdays[i]) for i in bdays] 
-	% explanation:
-	% first off, i and bdays[i] are switched because we want (name, birthday), and 
-	% the name is i
-	% 
-	% next, i and bdays[i] are in parentheses because we want them to be a tuple
+	bdays\_list = [(i, bdays[i]) for i in bdays]
 \end{code}
 \noindent\textbf{Explanation:}
 \begin{words}
-	\vspace{1.2 cm}
+	First off, \icode{i} and \icode{bdays[i]} are switched because we want \icode{(name, birthday)}, and the name is \icode{i}. Next, \icode{i} and \icode{bdays[i]} are in parentheses because we want them to be a tuple.
 \end{words}
 
 \section{\icode{if} Statement}
@@ -454,12 +448,13 @@ Here, \icode{h} will have the value \icode{2}.
 \textbf{Solution:}
 
 \begin{code}
-	\vspace{2 in}
-%solution:
-%def magnitude(a):
-%    return (a[0]**2 + a[1]**2)**0.5
-%print(magnitude((3, 4)))
-%print(magnitude((-3, 4)))
+	\begin{tabbing}
+		\hspace{5 cm} \= \hspace{5 cm} \kill
+		def magnitude(a):\\
+		\hspace{2 em}return (a[0]**2 + a[1]**2)**0.5\\
+		print(magnitude((3, 4)))\\
+		print(magnitude((-3, 4)))
+	\end{tabbing}
 \end{code}
 
 
@@ -480,47 +475,45 @@ Here, \icode{h} will have the value \icode{2}.
 \icode{A} here having an order of three is only for an example to show how it is formatted. \icode{A} and \icode{B} have an arbitrary order. Write a function that returns matrix \icode{C}, which is the product \icode{AB}.\\
 \noindent \textbf{Solution:}
 \begin{code}
-	\vspace{6 in}
-% Solution:
-%
-%def times(A, B):
-%	C = []
-%	for b in range(len(A)):  # b is each row of A
-%		s = []  # s is the row in C
-%		for i in range(len(A)):  # i is each column in B
-%			k = 0  # k is the running element of C
-%			for a in range(len(A)):  # a is each position in the row of A and column in B
-%				k += A[b][a] * B[a][i]
-%			s.append(k)
-%		C.append(s)
-%	return C
-
+\begin{tabbing}
+	\hspace{5 cm} \= \hspace{5 cm} \kill
+	def times(A, B):\\
+		\hspace{2 em}C = []\\
+		\hspace{2 em}for b in range(len(A)):  \# b is each row of A\\
+			\hspace{4 em}s = []  \# s is the row in C\\
+			\hspace{4 em}for i in range(len(A)):  \# i is each column in B\\
+				\hspace{6 em}k = 0  \# k is the running element of C\\
+				\hspace{6 em}for a in range(len(A)):  \# a is each position in the row of A and column in B\\
+					\hspace{8 em}k += A[b][a] * B[a][i]\\
+				\hspace{6 em}s.append(k)\\
+			\hspace{4 em}C.append(s)\\
+		\hspace{2 em}return C
+\end{tabbing}
 \end{code}
 
-\newpage
 \noindent 2. Write code that makes a list of all primes less than 100,000.\\
 \noindent \textbf{Solution:}
-
+% here is solution: (runtime less than 0.5 second on a laptop)
 \begin{code}
-	\vspace{8 in}
-
-% here is solution: (runtime less than half a second on a laptop)
-%primes = [2]
-%f = 0
-%for i in range(3, 100000, 2):
-%        while primes[f] <= (int((i)**0.5) + 1) and f < len(primes)-1:
-%                if i%primes[f] == 0:
-%                        f = 0
-%                        break
-%                f += 1
-%        else:
-%                primes.append(i)
-%                f = 0
-% printing: (not necessary but helpful for testing:)
-%f = 0
-%while (15+f) < len(primes) -1:
-%        print(primes[f:(f+15)])
-%        f += 15
-%print(primes[f:])
+\begin{tabbing}
+	\hspace{5 cm} \= \hspace{5 cm} \kill
+	primes = [2]\\
+	f = 0\\
+	for i in range(3, 100000, 2):\\
+	    \hspace{2 em}while primes[f] <= (int((i)**0.5)) and f < len(primes)-1:\\
+		\hspace{4 em}if i \% primes[f] == 0:\\
+		    \hspace{6 em}f = 0\\
+	            \hspace{6 em}break\\
+		\hspace{4 em}f += 1\\
+	    \hspace{2 em}else:\\
+	        \hspace{4 em}primes.append(i)\\
+	        \hspace{4 em}f = 0\\
+	\# printing (not necessary)\\
+	f = 0\\
+	while (15+f) < len(primes)-1:\\
+	    \hspace{2 em}print(primes[f:f+15])\\
+	    \hspace{2 em}f += 15\\
+	print(primes[f:])
+\end{tabbing}
 \end{code}
 \end{document}
